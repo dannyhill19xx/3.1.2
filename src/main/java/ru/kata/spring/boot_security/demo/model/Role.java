@@ -48,13 +48,7 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String toString() {
-        String admin = "ROLE_ADMIN";
-        if (roleName.equals(admin)) {
-            return "ADMIN";
-        } else {
-            return "USER";
-        }
-
+        return roleName;
     }
 
     @Override
