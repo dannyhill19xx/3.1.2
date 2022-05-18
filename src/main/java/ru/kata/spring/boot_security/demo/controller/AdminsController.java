@@ -3,6 +3,7 @@ package ru.kata.spring.boot_security.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.Role;
@@ -32,7 +33,7 @@ public class AdminsController {
     }
 
     @GetMapping("/edit/{id}")
-    public String updateUser(ModelMap model, @PathVariable("id") int id) {
+    public String updateUser(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("roles", roleService.getAllRoles());
         return "edit";
@@ -49,7 +50,7 @@ public class AdminsController {
     }
 
     @GetMapping("/new")
-    public String newUser(ModelMap model) {
+    public String newUser(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("roles", roleService.getAllRoles());
         return "new";
