@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>USERS</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/admin/edit/{id}(id = ${user.getId()})}" th:object="${user}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <br/>
+    <label for="surname">Enter surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <br/>
+    <br/>
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <br/>
+    <br/>
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <br/>
+    <br/>
+    <label for="password">Password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <br/>
+    <br/>
+    <div>
+        <select name="roless">Role:
+            <optgroup label="Access mod">
+            <option value="ROLE_USER">USER</option>
+            <option value="ROLE_ADMIN">ADMIN</option>
+            </optgroup>
+        </select>
+<!--        <label>User</label>-->
+<!--        <input type="radio" name="roless" value="ROLE_USER"/>-->
+<!--        <label>Admin</label>-->
+<!--        <input type="radio" name="roless" value="ROLE_ADMIN"/>-->
+    </div>
+    <br/>
+    <br/>
+    <input type ="submit" value="Update!"/>
+    <br/>
+    <br/>
+    <a th:href="@{/logout}">Logout</a>
+</form>
+</body>
+</html>
