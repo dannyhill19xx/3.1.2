@@ -14,25 +14,25 @@ import java.util.Set;
 @Transactional
 public class RoleServiceImpl implements RoleService {
 
-    private RoleDAO roleDao;
+    private final RoleDAO roleDAO;
 
     @Autowired
     public RoleServiceImpl(RoleDAO roleDao) {
-        this.roleDao = roleDao;
+        this.roleDAO = roleDao;
     }
 
     public List<User> getAllRoles(){
-        return roleDao.getAllRoles();
+        return roleDAO.getAllRoles();
     }
 
     @Override
     public void saveRole(Role role) {
-        roleDao.saveRole(role);
+        roleDAO.saveRole(role);
     }
 
     @Override
     public Set<Role> getRolesSet(Set<String> roles) {
-        return roleDao.getRolesSet(roles);
+        return roleDAO.getRolesSet(roles);
     }
 
 }

@@ -12,8 +12,8 @@ import java.util.Set;
 @Component
 public class FirstStartDBService implements CommandLineRunner {
 
-    private UserService userService;
-    private RoleService roleService;
+    private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
     public FirstStartDBService(UserService userService, RoleService roleService) {

@@ -15,9 +15,9 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private  UserDAO userDAO;
-    private RoleService roleService;
-    private ApplicationContext context;
+    private final UserDAO userDAO;
+    private final RoleService roleService;
+    private final ApplicationContext context;
 
     @Autowired
     public UserServiceImpl(UserDAO userDAO, RoleService roleService, ApplicationContext context) {

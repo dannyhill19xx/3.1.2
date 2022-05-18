@@ -16,8 +16,8 @@ import java.util.Set;
 @RequestMapping("/admin")
 public class AdminsController {
 
-    private UserServiceImpl userService;
-    private RoleService roleService;
+    private final UserServiceImpl userService;
+    private final RoleService roleService;
 
     @Autowired
     public AdminsController(UserServiceImpl userService, RoleService roleService) {
@@ -40,8 +40,7 @@ public class AdminsController {
 
     @PatchMapping("/edit/{id}")
     public String updateUser(@ModelAttribute User user,
-                             @RequestParam(value = "roless",
-                                     required = false) Set<String> roles) {
+                             @RequestParam(value = "roless") Set<String> roles) {
 
         Set<Role> setRoles = roleService.getRolesSet(roles);
         user.setRoles(setRoles);
@@ -58,9 +57,7 @@ public class AdminsController {
 
     @PostMapping()
     public String newUser(@ModelAttribute User user,
-                          @RequestParam(value = "roless",
-                                  required = false,
-                                  defaultValue = "ROLE_USER") Set<String> roles) {
+                          @RequestParam(value = "roless") Set<String> roles) {
         Set<Role> setRoles = roleService.getRolesSet(roles);
         user.setRoles(setRoles);
         userService.saveUser(user);
